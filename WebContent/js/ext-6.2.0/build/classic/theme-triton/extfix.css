@@ -1,0 +1,4 @@
+body > .x-mask {
+	background-image: none;
+    background-color: rgba(0, 0, 0, 0.4);
+}

@@ -1,0 +1,82 @@
+div.zxf_pagediv{
+	color: #999999;
+	font-size:14px;
+}
+div.zxf_pagediv a{
+	text-decoration: none;
+	text-align: center;
+	
+}
+div.zxf_pagediv span,div.zxf_pagediv a{
+	display: inline-block;
+	box-sizing: border-box;
+	text-align: center;
+}
+span.disabled{
+	height: 28px;
+	width: 28px;
+	line-height: 28px;
+	background: #f2f2f2;
+	margin: 0 6px;
+	border-radius:4px;
+}
+.current{
+	color: #ffffff;
+	background: #0274DD;
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	margin: 0 6px;
+	border-radius:4px;
+}
+.zxfPagenum{
+	color: #999999;
+	background: #FFFFFF;
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	border: 1px solid #dfdfdf;
+	margin: 0 6px;
+	border-radius:4px;
+}
+.nextpage{
+	color: #0274DD;
+	margin: 0 6px;
+	border: 1px solid #0274DD;
+}
+
+.lastbtn,.firstbtn{
+	color: #999999;
+	background: #FFFFFF;
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	border: 1px solid #dfdfdf;
+	border-radius:4px;
+	margin: 0 6px;
+}
+
+.nextbtn,.prebtn{
+	color: #999999;
+	background: #FFFFFF;
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	border: 1px solid #dfdfdf;
+	border-radius:4px;
+	margin: 0 6px;
+}
+.zxfinput{
+	width: 28px;
+	height: 28px;
+	text-align: center;
+	box-sizing: border-box;
+	border: 1px solid #dfdfdf;
+	margin: 0 12px;
+}
+.zxfokbtn{
+	width: 45px;
+	height: 28px;
+	line-height: 28px;
+	border: 1px solid #dfdfdf;
+}

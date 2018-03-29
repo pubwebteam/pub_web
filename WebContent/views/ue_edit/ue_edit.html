@@ -1,0 +1,73 @@
+<div route-addr></div>
+<div ng-controller="UeEditCtrl" class="row clearfix wrapper wrapper-content animated fadeInRight">
+	<!-- <div class="col-md-6 column">
+	
+	</div> -->
+	<div class="row">
+		<div class="col-md-6 column">
+	       	<div class="ibox">
+				<div class="ibox-content">
+					<table datatable="dt" dt-options="dtOptions" id="dtable" 
+						dt-instance="dtInstance" dt-columns="dtColumns"
+						dt-column-defs="dtColumnDefs" class="table table-hover">
+					</table>
+				</div>
+			</div>
+	    </div>	
+   	 
+		<div class="col-md-6 column">
+			<div class="ibox">
+		    	<div class="ibox-content" style="border: none;">
+			        <form role="form" class="form-horizontal" name="form" novalidate>
+			            <div class="form-group"><label class="col-sm-2 control-label"><span class="text-danger">* </span>标题</label>
+							<div class="col-sm-10">
+								<input type="text" name="TITLE" ng-model="dt.TITLE" class="form-control" required>
+								<p class="text-danger" ng-show="form.TITLE.$error.required && onsave" >标题不能为空</p>
+							</div>
+	                    </div>
+	                   	<div class="form-group"><label class="col-sm-2 control-label"><span class="text-danger">* </span>类型</label>
+							<div class="col-sm-10">
+								<select style="width: 100%" chosen disable-search="false" required name="TYPE"
+									class="chosen-select chzn-select" search_contains="true"
+									no-results-text="'没有找到相应条目'" ng-model="typeSelect"
+									data-placeholder-text-single="'请选择...'"
+									ng-options="item.NAME for item in type_list">
+								</select>
+								<p class="text-danger" ng-show="form.TYPE.$error.required && onsave" >类型不能为空</p>
+							</div>
+	                    </div>
+	                   	<div class="form-group"><label class="col-sm-2 control-label">文件名</label>
+							<div class="col-sm-10"><input type="text" ng-model="dt.FILE_NAME" class="form-control" readOnly></div>
+	                    </div>
+	                   	<div class="form-group"><label class="col-sm-2 control-label">Url路径</label>
+							<div class="col-sm-10"><input type="text" ng-model="dt.URL" class="form-control" readOnly></div>
+	                    </div>
+	                   	<div class="form-group"><label class="col-sm-2 control-label">描述</label>
+							<div class="col-sm-10"><input type="text" ng-model="dt.REMARK" class="form-control"></div>
+	                    </div>
+	                    <div class="form-group">
+	            			<div class="col-sm-4 col-sm-offset-2">
+	                           <button class="btn btn-info center" ng-click="reset()">新建</button>
+	                           <button class="btn btn-primary center" ng-click="saveForm()">保存</button>
+	                           <button class="btn btn-danger center" ng-click="deleteForm()">删除</button>
+	                        </div>
+	                    </div>
+			        </form>
+			    </div>
+	    	</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 column" style="text-align:center"  >
+			<div style="width:90%;height: 350px" class="ueditor"
+				config="config" ng-model="HTMLDATA"></div>
+		</div>
+	</div>
+	<div class="row" style="margin-top: 10px;">
+		<div class="col-md-12 column">
+			<button class="btn btn-primary" ng-click="submit()">提交</button>
+		</div>
+	</div>
+	
+
+</div>

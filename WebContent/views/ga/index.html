@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="ajaxpost.js"></script>
+<script type="text/javascript" src="date_func.js"></script>
+<script type="text/javascript" src="index.js?v=5555"></script>
+
+<link rel="stylesheet" href="../../js/pageSwitch/src/pageSwitch.css?v=5555">
+<script src="../../js/pageSwitch/dist/pageSwitch.min.js?v=5555"></script>
+
+<script type="text/javascript">
+</script> 
+<style type="text/css">
+body{
+	font-family: 'Microsoft YaHei';
+	-webkit-text-size-adjust: 100%!important;
+	margin: 0 auto;
+	padding: 0;
+	min-height: 100%;
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-attachment: fixed;
+	overflow-x:hidden;
+}
+
+.box{
+position:absolute;
+top:0;
+bottom:0;
+left:0;
+right:0;
+background:#000;
+opacity:0.3;
+}
+
+.xin_table{
+	margin-left:3%;
+	width:94%;
+	margin-right:3%;
+	height:250px;
+}
+
+ .swiper-slide{
+     text-align:center;
+     font-size:18px;
+     display:flex;
+     justify-content:center;
+     align-items:center;
+     background:#F2F2F2;
+ }
+ 
+.xin_table a{line-height:30px;display:block;overflow:hidden;word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#666;text-decoration:none;}
+.xin_table a:hover{text-decoration:underline;color:#333333;}
+
+.news-list{margin-top:4px;overflow:hidden;padding-left: 0px;margin-left:0px;padding:0px;}
+.news-list li{height:28px;margin:0;display:block;overflow:hidden;width:100%;text-align:left;}
+.news-list .dots{float:left;line-height:40px;font-size:18px;width:15px;font-weight:bold;color:#666;}
+.news-new{line-height:20px;float:left;text-align:right;width:32px;height:20px;color:#fff;text-indent:9999px;overflow:hidden;display:block;background-image:url(images/new-icon.png);margin:5px 0}
+.news-time{line-height:40px;float:right;width:40px;font-size:14px;text-align:right;margin-right:8px;}
+.news-process_error{line-height:18px;margin-top:10px;float:right;width:18%;font-size:14px;text-align:center;margin-right:2%;background-color:#D7342E;color:white;border-radius:9px;}
+.news-process_warn{line-height:18px;margin-top:10px;float:right;width:18%;font-size:14px;text-align:center;margin-right:2%;background-color:#E0690C;color:white;border-radius:9px;}
+.news-process_finish{line-height:18px;margin-top:10px;float:right;width:18%;font-size:14px;text-align:center;margin-right:2%;background-color:#4AAA4A;color:white;border-radius:9px;}
+
+.news-list li a{float:left;width:76%;line-height:40px;display:block;overflow:hidden;word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#666;text-decoration:none;font-size:16px;}
+.news-list a:hover{text-decoration:underline;color:#333333;}
+.tcolor{
+	color:#ffc954;	
+}
+
+.titlecolor{
+  background: -webkit-linear-gradient(#EBF5FD, white); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#EBF5FD, white); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#EBF5FD, white); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#EBF5FD, white); /* 标准的语法 */
+  height:35px;
+  line-height:35px;
+ }
+ 
+ .titlecolor td:first-child{
+ 	color:white;font-weight:600;font-size:16px;letter-spacing:2px;
+ 	background-image:url(./img/tab_img.png);background-size:100% 100%;
+ 	background-repeat:no-repeat; 
+ }
+ 
+ 
+ .titlecolord{
+  background: -webkit-linear-gradient(#EBF5FD, white); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#EBF5FD, white); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#EBF5FD, white); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#EBF5FD, white); /* 标准的语法 */
+  height:36px;
+  line-height:36px;
+ }
+ 
+ .titlecolord td:first-child{
+ 	color:white;font-weight:600;font-size:16px;letter-spacing:2px;background-image:url(./img/tab_img.png);background-size:100% 100%;width:150px; 
+ }
+ 
+#container {
+	overflow: hidden;
+}
+.sections,.section {
+	height:100%;
+}
+#container,.sections {
+	position: relative;
+}
+.section {
+	background-color: #000;
+	background-size: cover;
+	background-position: 50% 50%;
+	text-align: center;
+	color: white;
+}
+	
+	
+</style>
+<title></title>
+</head>
+<body>
+<div id="main" data-role="page">
+	
+	<table id='tshow' style='display:none;position:absolute;width:160px;border:0;border-collapse:collapse;border-spacing:0;color:#2980D0;z-index:1000;background-color:#E1F1FE;opacity:1;'>
+	</table>
+	
+	<img id='top_table' src='./img/top_img.jpg' style='width:100%;' />
+	
+	<table id='nav_table' style="margin-top:-8px;border:0;border-collapse:collapse;border-spacing:0;background-image:url('./img/nav_back.png');background-repeat:no-repeat;background-size:cover;width:100%;color:white;font-size:18px;font-weight:600;">
+		<tr>
+			<td width='10%;'></td>
+			<td width='12%;' align='center' class='tcolor' style='border-right:1px solid #509EE8;'>首页</td>
+			<td width='12%;' url='sjzy' newwindow='N' align='center' style='border-right:1px solid #509EE8;text-shadow:none;' onmouseover="addcol(this);" onmouseout="delcol(this);" onclick="gotopage(this);">市局主页</td>
+			<td width='12%;' url='./org_detail.html' style='border-right:1px solid #509EE8;text-shadow:none;' newwindow='N' align='center' onmouseover="addcol(this);" onmouseout="delcol(this);" onclick="gotopage(this);">组织机构</td>
+			<td width='12%;' url='../../console/infodevy/infodevy.jsp' style='border-right:1px solid #509EE8;text-shadow:none;' newwindow='Y' align='center' onmouseover="addcol(this);" onmouseout="delcol(this);" onclick="gotopage(this);">信息报送</td>
+			<td width='12%;' url='ftp' newwindow='N' align='center' style='border-right:1px solid #509EE8;text-shadow:none;' onmouseover="addcol(this);" onmouseout="delcol(this);" onclick="gotopage(this);">FTP</td>
+			<td width='5%'></td>
+			<td id='systime' style='text-shadow:none;'></td>
+		</tr>
+	</table>
+	
+	
+	
+	<div style='margin-top:0px;padding-top:30px;border-left:1px solid #EDEDED;border-right:1px solid #EDEDED;margin-left:7%;margin-right:7%;box-shadow: 2px 0px 0px #EDEDED,-2px 0px 0px #EDEDED;text-align:center;'>
+		
+		<div class='xin_table' style=''>
+			<table style='width:100%;table-layout: fixed;'>
+				<tr>
+					<td style='width:37.5%;' valign='top' align='center'>
+					<div id="container" style='height:265px;'>
+						<div class="sections" >
+						
+						</div>
+					</div>
+					
+			        </td>
+					<td style='width:35%;' valign='top'>
+						<table style='width:100%;border:0;border-collapse:collapse;border-spacing:0;margin-left:5px;table-layout: fixed;paddding-left:8px;' >
+							<tr class='titlecolor' ><td width='128' align='left'><span style='margin-left:15px;'>图片新闻</span></td><td align='right' style='color:#666;'>
+								<div class='bclc' style='margin-bottom:-1px;margin-left:-5px;height:31px;border-bottom:1px solid #2980D0;'><a href="more_detail.html?type=00" title="更多>>" target="_blank" style='font-size:14px;'>更多>></a></div></td></tr>
+							
+							<tr>
+								<td colspan='2' align='left'>
+									<ul class="news-list" style='' id='news_content'>
+					                                        
+				       			 	</ul>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td style='width:27.5%;padding-left:20px;'  valign='top'>
+						<table style='width:100%;border:0;border-collapse:collapse;border-spacing:0;table-layout: fixed;'>
+							<tr class='titlecolor'><td width='128' align='left'><span style='margin-left:15px;'>通知通告</span></td><td align='right' style='color:#666;'>
+							<div class='bclc' style='margin-bottom:-1px;margin-left:-6px;height:31px;border-bottom:1px solid #2980D0;'><a href="more_detail.html?type=02" title="更多>>" target="_blank" style='font-size:14px;'>更多>></a></div></td></tr>
+							
+							<tr>
+								<td colspan='2' valign='top'>
+									<ul class="news-list" id='notice_content'>
+					                    
+				       			 	</ul>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		
+		
+		<div class='xin_table' style='margin-top:30px;'>
+			<table style='width:100%;'>
+				<tr>
+					<td style='width:50%;' valign='top'>
+						<table style='width:100%;border:0;border-collapse:collapse;border-spacing:0;table-layout: fixed;'>
+							<tr class='titlecolor'><td  width='128' align='left'><span style='margin-left:15px;'>重要文件</span></td><td align='right' style='color:#666;'>
+							<div class='bclc'  style='margin-bottom:-1px;margin-left:-6px;height:31px;border-bottom:1px solid #2980D0;'><a href="more_detail.html?type=01" title="更多>>" target="_blank" style='font-size:14px;'>更多>></a></div></td></tr>
+							
+							<tr>
+								<td colspan='2'>
+									<ul class="news-list" id='impfile_content'>
+					                    
+				       			 	</ul>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td style='width:50%;padding-left:20px;'  valign='top'>
+						<table style='width:100%;border:0;border-collapse:collapse;border-spacing:0;table-layout: fixed;'>
+							<tr class='titlecolor'><td width='128' align='left'><span style='margin-left:15px;'>工作进度</span></td><td>
+							<div class='bclc'  style='margin-bottom:-1px;margin-left:-6px;height:31px;border-bottom:1px solid #2980D0;'></div></td></tr>
+							
+							<tr>
+								<td colspan='2'>
+									<ul class="news-list" id='work_content'>
+							                    
+				       			 	</ul>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		
+		
+		<div class='xin_table' style='margin-top:20px;'>
+			<table style='width:100%;'>
+				<tr>
+					<td style='width:50%;' valign='top'>
+						<table style='width:100%;border:0;border-collapse:collapse;border-spacing:0;table-layout: fixed;'>
+							<tr class='titlecolor'><td width='128' align='left'><span style='margin-left:15px;'>简报专报</span></td><td align='right' style='color:#666;'>
+							<div class='bclc'  style='margin-bottom:-1px;margin-left:-6px;height:31px;border-bottom:1px solid #2980D0;'><a href="more_detail.html?type=03" title="更多>>" target="_blank" style='font-size:14px;'>更多>></a></div></td></tr>
+							
+							<tr>
+								<td colspan='2'>
+									<ul class="news-list" id='spreport_content'>
+					                    
+				       			 	</ul>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td style='width:50%;padding-left:20px;'  valign='top'>
+						<table style='width:100%;border:0;border-collapse:collapse;border-spacing:0;table-layout: fixed;'>
+							<tr class='titlecolor'><td width='128' align='left'><span style='margin-left:15px;'>工作动态</span></td><td align='right' style='color:#666;'>
+							<div class='bclc'  style='margin-bottom:-1px;margin-left:-6px;height:31px;border-bottom:1px solid #2980D0;'><a href="more_detail.html?type=04" title="更多>>" target="_blank" style='font-size:14px;'>更多>></a></div></td></tr>
+							
+							<tr>
+								<td colspan='2'>
+									<ul class="news-list" id='workdyms_content'>
+					                    
+				       			 	</ul>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		
+		<div class='xin_table' style='margin-top:20px;'>
+			<table style='width:100%;'>
+				<tr>
+				
+					<td style='width:50%;'  valign='top'>
+							<table style='width:100%;border:0;border-collapse:collapse;border-spacing:0;table-layout: fixed;'>
+								<tr class='titlecolor'><td width='128' align='left'><span style='margin-left:15px;'>先进经验</span></td><td align='right' style='color:#666;'>
+								<div class='bclc'  style='margin-bottom:-1px;margin-left:-6px;height:31px;border-bottom:1px solid #2980D0;'><a href="more_detail.html?type=05" title="更多>>" target="_blank" style='font-size:14px;'>更多>></a></div></td></tr>
+								
+								<tr>
+									<td colspan='2'>
+										<ul class="news-list" id='advexp_content'> 
+						                    
+						                    
+					       			 	</ul>
+									</td>
+								</tr>
+							</table>
+					</td>
+					
+					<td style='width:50%;padding-left:20px;' valign='top'>
+						<table style='width:100%;border:0;border-collapse:collapse;border-spacing:0;table-layout: fixed;'>
+							<tr class='titlecolor'><td width='128' align='left'><span style='margin-left:15px;'>信息录用</span></td><td>
+							<div class='bclc'  style='margin-bottom:-1px;margin-left:-6px;height:31px;border-bottom:1px solid #2980D0;'></div></td></tr>
+							<tr>
+								<td colspan='2'>
+									<table style='width:100%;border:0;border-collapse:collapse;border-spacing:0;color:#666;margin-top:10px;' id='infodevyorg_content'>
+									
+									</table>
+									
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class='xin_table' style='margin-top:20px;'>
+			<table style='width:100%;'>
+				<tr>
+				
+					<td style='width:50%;' valign='top'>
+						<table style='width:100%;border:0;border-collapse:collapse;border-spacing:0;table-layout: fixed;'>
+							<tr class='titlecolor'><td width='128' align='left'><span style='margin-left:15px;'>待办事项</span></td><td style=''>
+							<div class='bclc'  style='margin-bottom:-1px;margin-left:-6px;height:31px;border-bottom:1px solid #2980D0;'></div></td></tr>
+							
+							<tr>
+								<td colspan='2' >
+									<ul class="news-list" id='backlog_content'>
+					                    
+				       			 	</ul>
+								</td>
+							</tr>
+						</table>
+					</td>
+					
+					<td style='width:50%;padding-left:20px;' valign='top'>
+						
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+	<div style='height:100px;background-color:#F5F5F5;text-align:center;padding-top:40px;padding-bottom:10px;'>
+		<img id='logimg' src=''>
+	</div>
+</div>
+</body>
+</html>
