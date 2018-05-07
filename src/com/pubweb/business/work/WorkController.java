@@ -1,5 +1,6 @@
 package com.pubweb.business.work;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -94,6 +95,62 @@ public class WorkController {
 		 obj.put("success", true);
 		 
 		 return obj.toString();
+	 }
+	 
+	 
+	 @RequestMapping(value="/queryAllChildren.do")
+	 public @ResponseBody String queryAllChildren(HttpServletRequest request) {
+		 
+		 String limit = request.getParameter("limit");
+		 String start = request.getParameter("start");
+		 
+		 String sql = "select id, "+
+				 "title,"+
+				 "main_percent,"+
+				 "create_user, "+
+				 "DATE_FORMAT(create_time,'%m-%d') create_time "+
+				 
+				 "from pub_work "+
+				 "where deleted = 'N' "+
+				 "order by id desc ";
+		 
+		 String totl_sql = "select count(1) cnt from pub_work where deleted = 'N'";
+		 
+		 JSONObject obj = new JSONObject();
+		 if(!StringUtils.isEmpty(limit)) {
+			if(StringUtils.isEmpty(start)) {
+				start = "0";
+			}
+			obj.put("total", jdbcTemplate.queryForMap(totl_sql).get("cnt"));
+			sql += "limit "+start+","+limit;
+		 }
+		 List<Map<String,Object>> res = jdbcTemplate.queryForList(sql);
+		 
+		 
+		 String csql = "select id, main_id, "+
+				 "item_title,"+
+				 "item_percent,"+
+				 "create_user, "+
+				 "DATE_FORMAT(create_time,'%m-%d') create_time ,mgr_comp,link_man,mgr_group,group_man,dateline "+
+				 
+				 "from pub_work_items "+
+				 "where deleted = 'N' AND main_id =? ";
+		 
+		 
+		 for (Iterator it = res.iterator(); it.hasNext();) {
+			Map<String, Object> mainMap = (Map<String, Object>) it.next();
+			
+			 List<Map<String,Object>> itemRes = jdbcTemplate.queryForList(csql,mainMap.get("id"));
+			 
+			mainMap.put("MXLIST", itemRes);
+		}
+		 
+		 
+		 obj.put("success", true);
+		 obj.put("data", res);
+		 
+		 return obj.toString();
+		 
 	 }
 	 
 	 

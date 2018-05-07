@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="ajaxpost.js"></script>
+<script type="text/javascript" src="date_func.js"></script>
+<script type="text/javascript" src="work_detail_total.js"></script>
+
+
+<script type="text/javascript">
+</script> 
+<style type="text/css">
+body{
+	font-family: 'Microsoft YaHei';
+	-webkit-text-size-adjust: 100%!important;
+	margin: 0 auto;
+	padding: 0;
+	min-height: 100%;
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-attachment: fixed;
+	overflow-x:hidden;
+}
+
+.bottomfix {
+    text-align: center;
+    background: white;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    -webkit-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    bottom: 0;
+    margin-bottom: -20;
+    border-width: 1px 0 0;
+}
+
+
+
+.box{
+position:absolute;
+top:0;
+bottom:0;
+left:0;
+right:0;
+background:#000;
+opacity:0.3;
+}
+
+.xin_table{
+margin-left:3%;
+width:94%;
+margin-right:3%;
+}
+
+.detal_table{
+	margin-top:20px;border:0;border-collapse:collapse;border-spacing:0;
+	margin-left:10%;width:80%;
+	
+}
+
+.detal_table tr td{
+	border:1px solid #B0B0B0;
+	line-height:30px;
+	height:30px;
+}
+
+.tcolor{
+	color:#ffc954;	
+}
+
+</style>
+<title></title>
+</head>
+<body>
+<div id="main" data-role="page">
+	<img id='top_table' src='./img/top_img.jpg' style='width:100%;' />
+	
+	<table id='nav_table' style="margin-top:-8px;border:0;border-collapse:collapse;border-spacing:0;background-image:url('./img/nav_back.png');background-repeat:no-repeat;background-size:cover;width:100%;color:white;font-size:18px;font-weight:600;">
+		<tr>
+			<td width='10%;'></td>
+			<td width='12%;' newwindow='N' url='./index.html' newwindow='N' align='center' onmouseover="addcol(this);" onmouseout="delcol(this);" onclick="gotopage(this);"  style='border-right:1px solid #509EE8;'>首页</td>
+			<td width='12%;' url='sjzy' newwindow='Y' align='center' style='border-right:1px solid #509EE8;text-shadow:none;' onmouseover="addcol(this);" onmouseout="delcol(this);" onclick="gotopage(this);">市局主页</td>
+			<td width='12%;' url='./org_detail.html' style='border-right:1px solid #509EE8;text-shadow:none;' newwindow='N' align='center' onmouseover="addcol(this);" onmouseout="delcol(this);" onclick="gotopage(this);">组织机构</td>
+			<td width='12%;' url='../../console/infodevy/infodevy.jsp' style='border-right:1px solid #509EE8;text-shadow:none;' newwindow='Y' align='center' onmouseover="addcol(this);" onmouseout="delcol(this);" onclick="gotopage(this);">信息报送</td>
+			<td width='12%;' url='ftp' newwindow='Y' align='center' style='border-right:1px solid #509EE8;text-shadow:none;' onmouseover="addcol(this);" onmouseout="delcol(this);" onclick="gotopage(this);">FTP</td>
+			<td width='5%'></td>
+			<td id='systime' style='text-shadow:none;'></td>
+		</tr>
+	</table>
+	
+	<div id='content' style='margin-top:0px;padding-top:30px;border-left:1px solid #EDEDED;border-right:1px solid #EDEDED;margin-left:7%;margin-right:7%;box-shadow: 2px 0px 0px #EDEDED,-2px 0px 0px #EDEDED;'>
+		<div class='xin_table'>
+			<table style='width:100%;'>
+				<tr>
+					<td>
+						<div id="ivs_title" style="text-align:center;font-size:21px;letter-spacing:1px;margin-top:40px;font-family:'方正小标宋简体';">云上公安、智能防控”战略重点项目（市局）推进进展</div>
+			        </td>
+				</tr>
+				<tr>
+					<td>
+						<table class='detal_table' style='margin-top:20px;'>
+							<tr>
+								<td width='30%' align='center' style='font-size:18px;padding-left:20px;'>项目名称</td>
+								<td width='15%' align='center' style='font-size:18px;'>责任单位</td>
+								<td width='10%' align='center' style='font-size:18px;'>联系人</td>
+								<td width='10%' align='center' style='font-size:18px;'>完成时限</td>
+								<td width='10%' align='center' style='font-size:18px;'>完成度</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div style='height:30px;'></div>
+	</div>
+	
+	
+	
+	<div class='bottomfix' style='height:100px;background-color:#F5F5F5;text-align:center;padding-top:40px;padding-bottom:10px;'>
+		<img id='logimg' src=''>
+	</div>
+			        
+	
+</div>
+</body>
+</html>

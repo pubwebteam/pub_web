@@ -1,8 +1,23 @@
 var loading=false;
+var pagesize=7;
+
+var xPos = 20;
+var yPos;
+var step = 1;
+var delay = 30;
+var height = 0;
+var Hoffset = 0;
+var Woffset = 0;
+var yon = 0;
+var xon = 0;
+var pause = true;
+var interval;
+
 $(document).ready(function(){ 
 	
 	if(IEVersion()<=8&&IEVersion()!=-1){
 		$('.bclc').height(31);
+		pagesize=6;
 	}else{
 		$('.bclc').height(35);
 	}
@@ -28,7 +43,96 @@ $(document).ready(function(){
 	 loadInfodevyorg();
 	 
 	
+	 //window.open("work_detail_total.html",'重点项目推进进度','width='+(window.screen.availWidth-10)+',height='+(window.screen.availHeight-30)+',top=0,left=0,resizable=yes,status=yes,menubar=no,scrollbars=yes');
+	 
+ yPos = 0;
+ 
+ $('#img').css('top',0);
+ 
+ loadworkTotal();
+ 
+ start();
+
 });
+
+function openWorkerWindow(){
+	window.open("work_detail_total.html");
+}
+
+function loadworkTotal(){
+	
+	var pstr="<tr><td colspan='5' align='center' style='font-family:楷体;font-size:12px;'>$TITLE</td></tr>";
+	var itemsstr="<tr style='font-family:FangSong;font-size:12px;'><td align='left' style='padding-left:20px;'>$ITEM_TITLE</td><td align='center'>$MGR_COMP</td><td align='center'>$LINK_MAN</td><td align='center'>$DATELINE</td><td align='center'>$ITEM_PERCENT</td></tr>";
+	
+	ajaxpost('/work/queryAllChildren.do',{stat:2},function(data){
+		for(var i=0;i<data.data.length;i++){
+		
+			var pst = pstr.replace('$TITLE',data.data[i].title);
+			$('.detal_table').append(pst);
+			
+			var mxlist = data.data[i].MXLIST;
+			
+			for(var j=0;j<mxlist.length;j++){
+			
+				var p = itemsstr.replace('$ITEM_TITLE',mxlist[j].item_title);
+				p = p.replace('$ITEM_PERCENT',mxlist[j].item_percent+'%');
+				
+				p = p.replace('$MGR_COMP',mxlist[j].mgr_comp?mxlist[j].mgr_comp:"");
+				p = p.replace('$LINK_MAN',mxlist[j].link_man?mxlist[j].link_man:"");
+				p = p.replace('$MGR_GROUP',mxlist[j].mgr_group?mxlist[j].mgr_group:"");
+				p = p.replace('$GROUP_MAN',mxlist[j].group_man?mxlist[j].group_man:"");
+				p = p.replace('$DATELINE',mxlist[j].dateline?mxlist[j].dateline:"");
+				
+				$('.detal_table').append(p);
+				
+			}
+			
+		}
+	});
+}
+
+function changePos() {
+	width = document.body.clientWidth;
+	height = document.body.clientHeight;
+	Hoffset = img.offsetHeight;
+	Woffset = img.offsetWidth;
+	 $('#img').css('left',xPos + document.body.scrollLeft);
+	 $('#img').css('top',yPos + document.body.scrollTop);
+	if (yon) {
+		yPos = yPos + step;
+	}
+	else {
+		yPos = yPos - step;
+	}
+	if (yPos < 0) {
+		yon = 1;
+		yPos = 0;
+	}
+	if (yPos >= (height - Hoffset)) {
+		yon = 0;
+		yPos = (height - Hoffset);
+	}
+	if (xon) {
+		xPos = xPos + step;
+	}
+	else {
+		xPos = xPos - step;
+	}
+	if (xPos < 0) {
+		xon = 1;
+		xPos = 0;
+	}
+	if (xPos >= (width - Woffset)) {
+		xon = 0;
+		xPos = (width - Woffset);
+	}
+}
+function start() {
+	img.style.visibility = "visible";
+	interval = setInterval('changePos()', delay);
+}
+
+
 
 function IEVersion() {
     var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串  
@@ -120,7 +224,7 @@ function loadBacklog(){
 		        '<span class="news-time">$CREATE_TIME</span>'+
 	        '</li>';
 	
-	ajaxpost('/backlog/query.do',{limit:7,start:0,stat:2},function(data){
+	ajaxpost('/backlog/query.do',{limit:pagesize,start:0,stat:2},function(data){
 		for(var i=0;i<data.data.length;i++){
 			
 			var p = str.replace('$TITLE',data.data[i].title);
@@ -145,7 +249,7 @@ function loadAdvexp(){
 		        '<span class="news-time">$CREATE_TIME</span>'+
 	        '</li>';
 	
-	ajaxpost('/news/query.do',{type:'05', limit:7,start:0,stat:2},function(data){
+	ajaxpost('/news/query.do',{type:'05', limit:pagesize,start:0,stat:2},function(data){
 		for(var i=0;i<data.data.length;i++){
 			
 			var p = str.replace('$TITLE',data.data[i].title);
@@ -169,7 +273,7 @@ function loadWorkdyms(){
 		        '<span class="news-time">$CREATE_TIME</span>'+
 	        '</li>';
 	
-	ajaxpost('/news/query.do',{type:'04', limit:7,start:0,stat:2},function(data){
+	ajaxpost('/news/query.do',{type:'04', limit:pagesize,start:0,stat:2},function(data){
 		for(var i=0;i<data.data.length;i++){
 			
 			var p = str.replace('$TITLE',data.data[i].title);
@@ -194,7 +298,7 @@ function loadSpreport(){
 		        '<span class="news-time">$CREATE_TIME</span>'+
 	        '</li>';
 	
-	ajaxpost('/news/query.do',{type:'03', limit:7,start:0,stat:2},function(data){
+	ajaxpost('/news/query.do',{type:'03', limit:pagesize,start:0,stat:2},function(data){
 		for(var i=0;i<data.data.length;i++){
 			
 			var p = str.replace('$TITLE',data.data[i].title);
@@ -219,7 +323,7 @@ function loadNotice(){
 		        '<span class="news-time">$CREATE_TIME</span>'+
 	        '</li>';
 	
-	ajaxpost('/news/query.do',{type:'02', limit:7,start:0,stat:2},function(data){
+	ajaxpost('/news/query.do',{type:'02', limit:pagesize,start:0,stat:2},function(data){
 		for(var i=0;i<data.data.length;i++){
 			
 			var p = str.replace('$TITLE',data.data[i].title);
@@ -243,7 +347,7 @@ function loadImpfile(){
 		        '<span class="news-time">$CREATE_TIME</span>'+
 	        '</li>';
 	
-	ajaxpost('/news/query.do',{type:'01', limit:7,start:0,stat:2},function(data){
+	ajaxpost('/news/query.do',{type:'01', limit:pagesize,start:0,stat:2},function(data){
 		for(var i=0;i<data.data.length;i++){
 			
 			var p = str.replace('$TITLE',data.data[i].title);
@@ -268,7 +372,7 @@ function loadNews(){
 		        '<span class="news-time">$CREATE_TIME</span>'+
 	        '</li>';
 	
-	ajaxpost('/news/query.do',{type:'00', limit:7,start:0,stat:2},function(data){
+	ajaxpost('/news/query.do',{type:'00', limit:pagesize,start:0,stat:2},function(data){
 		for(var i=0;i<data.data.length;i++){
 			
 			var p = str.replace('$TITLE',data.data[i].title);
@@ -322,7 +426,7 @@ function loadwork(){
 		        '<span class="$CLASS">$MAIN_PERCENT</span>'+
 	        '</li>';
 	
-	ajaxpost('/work/query.do',{limit:7,start:0,stat:2},function(data){
+	ajaxpost('/work/query.do',{limit:pagesize,start:0,stat:2},function(data){
 		for(var i=0;i<data.data.length;i++){
 			
 			var p = str.replace('$TITLE',data.data[i].title);

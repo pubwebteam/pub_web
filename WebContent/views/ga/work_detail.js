@@ -33,7 +33,7 @@ function loadwork(id){
 	});
 	
 	
-	var str="<tr><td align='center'>$ITEM_TITLE</td><td align='center'>$MGR_COMP</td><td align='center'>$LINK_MAN</td><td align='center'>$MGR_GROUP</td><td align='center'>$GROUP_MAN</td><td align='center'>$DATELINE</td><td align='center'>$ITEM_PERCENT</td></tr>";
+	var str="<tr style='font-family:FangSong;font-size:14px;'><td align='left' style='padding-left:20px;'>$ITEM_TITLE</td><td align='center'>$MGR_COMP</td><td align='center'>$LINK_MAN</td><td align='center'>$MGR_GROUP</td><td align='center'>$GROUP_MAN</td><td align='center'>$DATELINE</td><td align='center'>$ITEM_PERCENT</td></tr>";
 	        
 	ajaxpost('/work/queryItems.do',{main_id:id},function(data){
 	
