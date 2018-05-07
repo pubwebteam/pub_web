@@ -12,7 +12,7 @@
 <script type="text/javascript" src="index.js?v=5555"></script>
 
 <link rel="stylesheet" href="../../js/pageSwitch/src/pageSwitch.css?v=5555">
-<script src="../../js/pageSwitch/dist/pageSwitch.min.js?v=5555"></script>
+<script src="../../js/pageSwitch/dist/pageSwitch.min.js?v=677"></script>
 
 <script type="text/javascript">
 </script> 
@@ -59,15 +59,15 @@ opacity:0.3;
 .xin_table a:hover{text-decoration:underline;color:#333333;}
 
 .news-list{margin-top:4px;overflow:hidden;padding-left: 0px;margin-left:0px;padding:0px;}
-.news-list li{height:28px;margin:0;display:block;overflow:hidden;width:100%;text-align:left;}
-.news-list .dots{float:left;line-height:40px;font-size:18px;width:15px;font-weight:bold;color:#666;}
+.news-list li{height:30px;margin:0;display:block;overflow:hidden;width:100%;text-align:left;}
+.news-list .dots{float:left;line-height:36px;font-size:18px;width:15px;font-weight:bold;color:#666;}
 .news-new{line-height:20px;float:left;text-align:right;width:32px;height:20px;color:#fff;text-indent:9999px;overflow:hidden;display:block;background-image:url(images/new-icon.png);margin:5px 0}
 .news-time{line-height:40px;float:right;width:40px;font-size:14px;text-align:right;margin-right:8px;}
 .news-process_error{line-height:18px;margin-top:10px;float:right;width:18%;font-size:14px;text-align:center;margin-right:2%;background-color:#D7342E;color:white;border-radius:9px;}
 .news-process_warn{line-height:18px;margin-top:10px;float:right;width:18%;font-size:14px;text-align:center;margin-right:2%;background-color:#E0690C;color:white;border-radius:9px;}
 .news-process_finish{line-height:18px;margin-top:10px;float:right;width:18%;font-size:14px;text-align:center;margin-right:2%;background-color:#4AAA4A;color:white;border-radius:9px;}
 
-.news-list li a{float:left;width:76%;line-height:40px;display:block;overflow:hidden;word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#666;text-decoration:none;font-size:16px;}
+.news-list li a{float:left;width:76%;line-height:40px;display:block;overflow:hidden;word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#666;text-decoration:none;font-size:14px;}
 .news-list a:hover{text-decoration:underline;color:#333333;}
 .tcolor{
 	color:#ffc954;	
@@ -102,6 +102,23 @@ opacity:0.3;
  	color:white;font-weight:600;font-size:16px;letter-spacing:2px;background-image:url(./img/tab_img.png);background-size:100% 100%;width:150px; 
  }
  
+ 
+  .titlecolordv{
+  background: -webkit-linear-gradient(#EBF5FD, white); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#EBF5FD, white); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#EBF5FD, white); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#EBF5FD, white); /* 标准的语法 */
+  height:35px;
+  line-height:35px;
+ }
+ 
+ .titlecolordv td:first-child{
+ 	color:white;font-weight:600;font-size:16px;letter-spacing:2px;
+ 	background-image:url(./img/tab_img_1.png);background-size:100% 100%;
+ 	background-repeat:no-repeat; 
+ }
+ 
+ 
 #container {
 	overflow: hidden;
 }
@@ -118,13 +135,39 @@ opacity:0.3;
 	text-align: center;
 	color: white;
 }
-	
+
+.detal_table{
+	margin:10px;
+	border:0;border-collapse:collapse;border-spacing:0;
+}
+
+.detal_table tr td{
+	border:1px solid #B0B0B0;
+	line-height:30px;
+	height:30px;
+}
+
 	
 </style>
 <title></title>
 </head>
 <body>
 <div id="main" data-role="page">
+	
+<div id="img" style="position: absolute; left: 0; top: 0;visibility :hidden;z-index:10000;height:300px;width:480px;background-color:white;overflow-y:scroll;" onclick='openWorkerWindow();' onmouseover="clearInterval(interval)" onmouseout="interval = setInterval('changePos()', delay)" align="middle">
+		<div style="text-align:center;font-size:16px;letter-spacing:1px;margin-top:40px;font-family:'方正小标宋简体';">云上公安、智能防控”战略重点项目（市局）推进进展</div>
+		
+		<table class='detal_table' style='margin-top:20px;'>
+			<tr>
+				<td width='30%' align='center' style='font-size:14px;padding-left:20px;'>项目名称</td>
+				<td width='15%' align='center' style='font-size:14px;'>责任单位</td>
+				<td width='10%' align='center' style='font-size:14px;'>联系人</td>
+				<td width='10%' align='center' style='font-size:14px;'>完成时限</td>
+				<td width='10%' align='center' style='font-size:14px;'>完成度</td>
+			</tr>
+		</table>
+</div>
+</div>
 	
 	<table id='tshow' style='display:none;position:absolute;width:160px;border:0;border-collapse:collapse;border-spacing:0;color:#2980D0;z-index:1000;background-color:#E1F1FE;opacity:1;'>
 	</table>
@@ -148,7 +191,7 @@ opacity:0.3;
 	
 	<div style='margin-top:0px;padding-top:30px;border-left:1px solid #EDEDED;border-right:1px solid #EDEDED;margin-left:7%;margin-right:7%;box-shadow: 2px 0px 0px #EDEDED,-2px 0px 0px #EDEDED;text-align:center;'>
 		
-		<div class='xin_table' style=''>
+		<div class='xin_table' style='height:280px;'>
 			<table style='width:100%;table-layout: fixed;'>
 				<tr>
 					<td style='width:37.5%;' valign='top' align='center'>
@@ -164,8 +207,8 @@ opacity:0.3;
 							<tr class='titlecolor' ><td width='128' align='left'><span style='margin-left:15px;'>图片新闻</span></td><td align='right' style='color:#666;'>
 								<div class='bclc' style='margin-bottom:-1px;margin-left:-5px;height:31px;border-bottom:1px solid #2980D0;'><a href="more_detail.html?type=00" title="更多>>" target="_blank" style='font-size:14px;'>更多>></a></div></td></tr>
 							
-							<tr>
-								<td colspan='2' align='left'>
+							<tr style='background-color:#F6FBFE;height:228px;'>
+								<td colspan='2' align='left' style='border-bottom:1px solid #2980D0;'>
 									<ul class="news-list" style='' id='news_content'>
 					                                        
 				       			 	</ul>
@@ -178,8 +221,8 @@ opacity:0.3;
 							<tr class='titlecolor'><td width='128' align='left'><span style='margin-left:15px;'>通知通告</span></td><td align='right' style='color:#666;'>
 							<div class='bclc' style='margin-bottom:-1px;margin-left:-6px;height:31px;border-bottom:1px solid #2980D0;'><a href="more_detail.html?type=02" title="更多>>" target="_blank" style='font-size:14px;'>更多>></a></div></td></tr>
 							
-							<tr>
-								<td colspan='2' valign='top'>
+							<tr style='background-color:#F6FBFE;height:228px;'>
+								<td colspan='2' valign='top' style='border-bottom:1px solid #2980D0;'>
 									<ul class="news-list" id='notice_content'>
 					                    
 				       			 	</ul>
@@ -193,7 +236,7 @@ opacity:0.3;
 		
 		
 		
-		<div class='xin_table' style='margin-top:30px;'>
+		<div class='xin_table' style='margin-top:10px;'>
 			<table style='width:100%;'>
 				<tr>
 					<td style='width:50%;' valign='top'>
@@ -201,8 +244,8 @@ opacity:0.3;
 							<tr class='titlecolor'><td  width='128' align='left'><span style='margin-left:15px;'>重要文件</span></td><td align='right' style='color:#666;'>
 							<div class='bclc'  style='margin-bottom:-1px;margin-left:-6px;height:31px;border-bottom:1px solid #2980D0;'><a href="more_detail.html?type=01" title="更多>>" target="_blank" style='font-size:14px;'>更多>></a></div></td></tr>
 							
-							<tr>
-								<td colspan='2'>
+							<tr style='background-color:#F6FBFE;height:228px;'>
+								<td colspan='2' valign='top' style='border-bottom:1px solid #2980D0;'>
 									<ul class="news-list" id='impfile_content'>
 					                    
 				       			 	</ul>
@@ -212,11 +255,11 @@ opacity:0.3;
 					</td>
 					<td style='width:50%;padding-left:20px;'  valign='top'>
 						<table style='width:100%;border:0;border-collapse:collapse;border-spacing:0;table-layout: fixed;'>
-							<tr class='titlecolor'><td width='128' align='left'><span style='margin-left:15px;'>工作进度</span></td><td>
-							<div class='bclc'  style='margin-bottom:-1px;margin-left:-6px;height:31px;border-bottom:1px solid #2980D0;'></div></td></tr>
+							<tr class='titlecolordv'><td width='213' align='left'><span style='margin-left:15px;'>重点项目推进进度</span></td><td>
+							<div class='bclc'  style='margin-bottom:-1px;margin-left:-10px;height:31px;border-bottom:1px solid #2980D0;'></div></td></tr>
 							
-							<tr>
-								<td colspan='2'>
+							<tr style='background-color:#F6FBFE;height:228px;'>
+								<td colspan='2' valign='top' style='border-bottom:1px solid #2980D0;'>
 									<ul class="news-list" id='work_content'>
 							                    
 				       			 	</ul>
@@ -230,7 +273,7 @@ opacity:0.3;
 		
 		
 		
-		<div class='xin_table' style='margin-top:20px;'>
+		<div class='xin_table' style='margin-top:40px;'>
 			<table style='width:100%;'>
 				<tr>
 					<td style='width:50%;' valign='top'>
@@ -238,8 +281,8 @@ opacity:0.3;
 							<tr class='titlecolor'><td width='128' align='left'><span style='margin-left:15px;'>简报专报</span></td><td align='right' style='color:#666;'>
 							<div class='bclc'  style='margin-bottom:-1px;margin-left:-6px;height:31px;border-bottom:1px solid #2980D0;'><a href="more_detail.html?type=03" title="更多>>" target="_blank" style='font-size:14px;'>更多>></a></div></td></tr>
 							
-							<tr>
-								<td colspan='2'>
+							<tr style='background-color:#F6FBFE;height:228px;'>
+								<td colspan='2' valign='top' style='border-bottom:1px solid #2980D0;'>
 									<ul class="news-list" id='spreport_content'>
 					                    
 				       			 	</ul>
@@ -252,8 +295,8 @@ opacity:0.3;
 							<tr class='titlecolor'><td width='128' align='left'><span style='margin-left:15px;'>工作动态</span></td><td align='right' style='color:#666;'>
 							<div class='bclc'  style='margin-bottom:-1px;margin-left:-6px;height:31px;border-bottom:1px solid #2980D0;'><a href="more_detail.html?type=04" title="更多>>" target="_blank" style='font-size:14px;'>更多>></a></div></td></tr>
 							
-							<tr>
-								<td colspan='2'>
+							<tr style='background-color:#F6FBFE;height:228px;'>
+								<td colspan='2' valign='top' style='border-bottom:1px solid #2980D0;'>
 									<ul class="news-list" id='workdyms_content'>
 					                    
 				       			 	</ul>
@@ -266,7 +309,7 @@ opacity:0.3;
 		</div>
 		
 		
-		<div class='xin_table' style='margin-top:20px;'>
+		<div class='xin_table' style='margin-top:40px;'>
 			<table style='width:100%;'>
 				<tr>
 				
@@ -275,8 +318,8 @@ opacity:0.3;
 								<tr class='titlecolor'><td width='128' align='left'><span style='margin-left:15px;'>先进经验</span></td><td align='right' style='color:#666;'>
 								<div class='bclc'  style='margin-bottom:-1px;margin-left:-6px;height:31px;border-bottom:1px solid #2980D0;'><a href="more_detail.html?type=05" title="更多>>" target="_blank" style='font-size:14px;'>更多>></a></div></td></tr>
 								
-								<tr>
-									<td colspan='2'>
+								<tr style='background-color:#F6FBFE;height:228px;'>
+								<td colspan='2' valign='top' style='border-bottom:1px solid #2980D0;'>
 										<ul class="news-list" id='advexp_content'> 
 						                    
 						                    
@@ -290,9 +333,9 @@ opacity:0.3;
 						<table style='width:100%;border:0;border-collapse:collapse;border-spacing:0;table-layout: fixed;'>
 							<tr class='titlecolor'><td width='128' align='left'><span style='margin-left:15px;'>信息录用</span></td><td>
 							<div class='bclc'  style='margin-bottom:-1px;margin-left:-6px;height:31px;border-bottom:1px solid #2980D0;'></div></td></tr>
-							<tr>
-								<td colspan='2'>
-									<table style='width:100%;border:0;border-collapse:collapse;border-spacing:0;color:#666;margin-top:10px;' id='infodevyorg_content'>
+							<tr style='background-color:#F6FBFE;height:228px;'>
+								<td colspan='2' valign='top' style='border-bottom:1px solid #2980D0;'>
+									<table style='width:100%;border:0;border-collapse:collapse;border-spacing:0;color:#666;margin-top:10px;font-size:14px;' id='infodevyorg_content'>
 									
 									</table>
 									
@@ -304,7 +347,7 @@ opacity:0.3;
 			</table>
 		</div>
 		
-		<div class='xin_table' style='margin-top:20px;'>
+		<div class='xin_table' style='margin-top:40px;'>
 			<table style='width:100%;'>
 				<tr>
 				
@@ -313,8 +356,8 @@ opacity:0.3;
 							<tr class='titlecolor'><td width='128' align='left'><span style='margin-left:15px;'>待办事项</span></td><td style=''>
 							<div class='bclc'  style='margin-bottom:-1px;margin-left:-6px;height:31px;border-bottom:1px solid #2980D0;'></div></td></tr>
 							
-							<tr>
-								<td colspan='2' >
+							<tr style='background-color:#F6FBFE;height:228px;'>
+								<td colspan='2' valign='top' style='border-bottom:1px solid #2980D0;'>
 									<ul class="news-list" id='backlog_content'>
 					                    
 				       			 	</ul>
@@ -329,6 +372,7 @@ opacity:0.3;
 				</tr>
 			</table>
 		</div>
+		<div style='height:40px;'></div>
 	</div>
 	
 	<div style='height:100px;background-color:#F5F5F5;text-align:center;padding-top:40px;padding-bottom:10px;'>

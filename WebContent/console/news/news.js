@@ -248,7 +248,7 @@ function onReady() {
 			anchor : '100%',         
 			buttonText : '请选择文件...',
 			emptyText: '请上传图片', 
-            regex : /\.(png|jpg|jpeg|gif|bmp")$/,
+            regex : /\.(png|jpg|jpeg|gif|bmp)$/,
             regexText : "请上传图片",
 		}],         
 		buttons : [{
