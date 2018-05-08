@@ -6,7 +6,8 @@ var xin=true,yin=true;
 var step=1;  
 var xstep=20;  
 var ystep=5;  
-var delay=200;  
+var delay=200;
+var itl = 0;
 
 $(document).ready(function(){ 
 	
@@ -111,9 +112,9 @@ function float(){
 
 function start() {
 	var obj=$("#codefans_net"); 
-	var itl=setInterval("float()",delay);  
-    obj.onmouseover=function(){clearInterval(itl)}  
-    obj.onmouseout=function(){itl=setInterval("float()",delay)}  
+	itl=setInterval("float()",delay);  
+//    obj.onmouseover=function(){clearInterval(itl)}  
+//    obj.onmouseout=function(){itl=setInterval("float()",delay)}  
     
 }
 
