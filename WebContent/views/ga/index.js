@@ -1,17 +1,12 @@
 var loading=false;
 var pagesize=7;
 
-var xPos = 20;
-var yPos;
-var step = 1;
-var delay = 30;
-var height = 0;
-var Hoffset = 0;
-var Woffset = 0;
-var yon = 0;
-var xon = 0;
-var pause = true;
-var interval;
+var x=0,y=0;  
+var xin=true,yin=true;  
+var step=1;  
+var xstep=20;  
+var ystep=5;  
+var delay=200;  
 
 $(document).ready(function(){ 
 	
@@ -44,10 +39,7 @@ $(document).ready(function(){
 	 
 	
 	 //window.open("work_detail_total.html",'重点项目推进进度','width='+(window.screen.availWidth-10)+',height='+(window.screen.availHeight-30)+',top=0,left=0,resizable=yes,status=yes,menubar=no,scrollbars=yes');
-	 
- yPos = 0;
- 
- $('#img').css('top',0);
+
  
  loadworkTotal();
  
@@ -91,45 +83,38 @@ function loadworkTotal(){
 	});
 }
 
-function changePos() {
-	width = document.body.clientWidth;
-	height = document.body.clientHeight;
-	Hoffset = img.offsetHeight;
-	Woffset = img.offsetWidth;
-	 $('#img').css('left',xPos + document.body.scrollLeft);
-	 $('#img').css('top',yPos + document.body.scrollTop);
-	if (yon) {
-		yPos = yPos + step;
-	}
-	else {
-		yPos = yPos - step;
-	}
-	if (yPos < 0) {
-		yon = 1;
-		yPos = 0;
-	}
-	if (yPos >= (height - Hoffset)) {
-		yon = 0;
-		yPos = (height - Hoffset);
-	}
-	if (xon) {
-		xPos = xPos + step;
-	}
-	else {
-		xPos = xPos - step;
-	}
-	if (xPos < 0) {
-		xon = 1;
-		xPos = 0;
-	}
-	if (xPos >= (width - Woffset)) {
-		xon = 0;
-		xPos = (width - Woffset);
-	}
+function float(){  
+	var obj=$("#codefans_net"); 
+    var L=T=0;  
+    var R=document.documentElement.clientWidth-480;  
+    var B=document.documentElement.clientHeight-300;  
+    /*x=x+step*(xin?1:-1);  
+    if(x<L){xin=true;x=L;}  
+    if(x>R){xin=false;x=R;}  
+    y=y+step*(yin?1:-1);  
+    if(y<T){yin=true;y=T;}  
+    if(y>B){yin=false;y=B;}*/  
+      
+    if(x<L||x>R){xstep=-xstep;}  
+    if(y<T||y>B){ystep=-ystep;}  
+    x=x+xstep;  
+    y=y+ystep;  
+    
+    obj.css('left', x+document.documentElement.scrollLeft+"px");
+    obj.css('top', y+document.documentElement.scrollTop+"px");
+    
+//    obj.style.left=x+document.documentElement.scrollLeft+"px";  
+//    obj.style.top=y+document.documentElement.scrollTop+"px";  
+      
+      
 }
+
 function start() {
-	img.style.visibility = "visible";
-	interval = setInterval('changePos()', delay);
+	var obj=$("#codefans_net"); 
+	var itl=setInterval("float()",delay);  
+    obj.onmouseover=function(){clearInterval(itl)}  
+    obj.onmouseout=function(){itl=setInterval("float()",delay)}  
+    
 }
 
 
